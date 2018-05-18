@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoWithYou.Shared.Core\DoWithYou.Shared.Core.csproj" />
+    <ProjectReference Include="..\DynaApi.NET.Shared.Core\DynaApi.NET.Shared.Core.csproj" />
   </ItemGroup>
 
 </Project>

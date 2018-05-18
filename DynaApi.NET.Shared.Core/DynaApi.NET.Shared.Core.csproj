@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoWithYou.Service\DoWithYou.Service.csproj" />
+    <ProjectReference Include="..\DynaApi.NET.Service\DynaApi.NET.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

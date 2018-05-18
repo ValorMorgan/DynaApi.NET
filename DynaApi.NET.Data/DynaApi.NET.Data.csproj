@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoWithYou.Shared\DoWithYou.Shared.csproj" />
+    <ProjectReference Include="..\DynaApi.NET.Shared\DynaApi.NET.Shared.csproj" />
   </ItemGroup>
 
 </Project>

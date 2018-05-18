@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="..\DoWithYou\appsettings.json" Link="appsettings.json">
+    <Content Include="..\DynaApi.NET.API\appsettings.json" Link="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoWithYou.Data\DoWithYou.Data.csproj" />
+    <ProjectReference Include="..\DynaApi.NET.Data\DynaApi.NET.Data.csproj" />
   </ItemGroup>
 
 </Project>

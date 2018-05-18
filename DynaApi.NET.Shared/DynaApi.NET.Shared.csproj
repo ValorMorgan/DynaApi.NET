@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DoWithYou.Interface\DoWithYou.Interface.csproj" />
+    <ProjectReference Include="..\DynaApi.NET.Interface\DynaApi.NET.Interface.csproj" />
   </ItemGroup>
 
 </Project>
