@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Core.Utilities;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Core.Utilities;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.AspNetCore.Http;
 using Serilog;
 
-namespace DoWithYou.Shared.Core.Middleware
+namespace DynaApi.NET.Shared.Core.Middleware
 {
-    public class SerilogMiddleware
+    public class LoggingMiddleware
     {
-        #region VARIABLES
         private readonly RequestDelegate _next;
-        #endregion
 
-        #region CONSTRUCTORS
-        public SerilogMiddleware(RequestDelegate next)
+        public LoggingMiddleware(RequestDelegate next)
         {
-            Log.Logger.LogEventVerbose(LoggerEvents.CONSTRUCTOR, "Constructing {Class}", nameof(SerilogMiddleware));
+            Log.Logger.LogEventVerbose(LoggerEvents.CONSTRUCTOR, "Constructing {Class}", nameof(LoggingMiddleware));
 
             _next = next ?? throw new ArgumentNullException(nameof(next));
         }
-        #endregion
 
         public async Task Invoke(HttpContext httpContext)
         {

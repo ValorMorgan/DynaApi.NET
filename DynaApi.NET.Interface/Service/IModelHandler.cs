@@ -1,7 +1,7 @@
-﻿using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
+﻿using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
 
-namespace DoWithYou.Interface.Service
+namespace DynaApi.NET.Interface.Service
 {
     public interface IModelHandler<TModel, T1> : IModelRepository<TModel, T1>
         where TModel : IModel<T1>

@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Serilog;
 
-namespace DoWithYou.Shared.Core.Middleware
+namespace DynaApi.NET.Shared.Core.Middleware
 {
+    /// <summary>
+    /// Handler for exceptions from the server being converted to a BadResponse message providing details for the response.
+    /// </summary>
     public class BadResponseMiddleware
     {
-        #region VARIABLES
         private readonly RequestDelegate _next;
-        #endregion
 
-        #region CONSTRUCTORS
         public BadResponseMiddleware(RequestDelegate next)
         {
             Log.Logger.LogEventVerbose(LoggerEvents.CONSTRUCTOR, "Constructing {Class}", nameof(BadResponseMiddleware));
 
             _next = next ?? throw new ArgumentNullException(nameof(next));
         }
-        #endregion
 
         public async Task Invoke(HttpContext context)
         {
@@ -43,14 +42,19 @@ namespace DoWithYou.Shared.Core.Middleware
             }
         }
 
-        #region PRIVATE
+        /// <summary>
+        /// Converts the provided context and exception to a custom serializable response object.
+        /// </summary>
+        /// <param name="context">The context where the error occured.</param>
+        /// <param name="ex">The exception that occured.</param>
+        /// <returns>A custom serializable response object.</returns>
         private BadResponse GetResponse(HttpContext context, Exception ex)
         {
             var response = new BadResponse
             {
                 Error = new Error
                 {
-                    Code = StatusCodes.Status500InternalServerError,
+                    Code = context.Response.StatusCode,
                     Message = ex.Message
                 }
             };
@@ -77,6 +81,11 @@ namespace DoWithYou.Shared.Core.Middleware
             return response;
         }
 
+        /// <summary>
+        /// Serializes the provided serializable response object.
+        /// </summary>
+        /// <param name="response">The serializable response object.</param>
+        /// <returns>A serialized response as a string.</returns>
         private string GetResponseBody(BadResponse response) =>
             JsonConvert.SerializeObject(response, new JsonSerializerSettings
             {
@@ -84,12 +93,19 @@ namespace DoWithYou.Shared.Core.Middleware
                 NullValueHandling = NullValueHandling.Ignore
             });
 
+        /// <summary>
+        /// Attempts to handle the conversion of the exception to a proper response.
+        /// </summary>
+        /// <param name="context">The context where the error occured.</param>
+        /// <param name="ex">The exception that occured.</param>
+        /// <returns>True/False if the response was handled and written to the context response body.</returns>
         private async Task<bool> TryHandleBadResponseAsync(HttpContext context, Exception ex)
         {
             try
             {
                 Log.Logger.LogEventWarning(LoggerEvents.RESPONSE, "Bad response with status code {Status} being handled.", context.Response.StatusCode);
 
+                // TODO: It may be wiser to let the StatusCode persist instead of forcing it to a 500
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                 context.Response.ContentType = @"application/json";
 
@@ -107,35 +123,28 @@ namespace DoWithYou.Shared.Core.Middleware
 
             return true;
         }
-        #endregion
     }
 
     class BadResponse
     {
-        #region PROPERTIES
         public Error Error { get; set; }
-        #endregion
     }
 
     class Error
     {
-        #region PROPERTIES
         public int Code { get; set; }
 
         public AdditionalError[] Errors { get; set; }
 
         public string Message { get; set; }
-        #endregion
     }
 
     class AdditionalError
     {
-        #region PROPERTIES
         public string Domain { get; set; }
 
         public string Message { get; set; }
 
         public string Reason { get; set; }
-        #endregion
     }
 }

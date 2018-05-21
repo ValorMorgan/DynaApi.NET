@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DoWithYou.Interface.Data
+namespace DynaApi.NET.Interface.Data
 {
     public interface IRepository<T> : IDisposable
     {

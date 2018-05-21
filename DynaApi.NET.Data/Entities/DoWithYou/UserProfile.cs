@@ -1,9 +1,9 @@
-﻿using DoWithYou.Data.Entities.DoWithYou.Base;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Converters;
+﻿using DynaApi.NET.Data.Entities.DoWithYou.Base;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Converters;
 
-namespace DoWithYou.Data.Entities.DoWithYou
+namespace DynaApi.NET.Data.Entities.DoWithYou
 {
     public class UserProfile : BaseEntity, IUserProfile
     {

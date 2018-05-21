@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 
-namespace DoWithYou.Data.Factories
+namespace DynaApi.NET.Data.Factories
 {
     public class DbContextOptionsFactory<T> : IDbContextOptionsFactory<T>
         where T : DbContext

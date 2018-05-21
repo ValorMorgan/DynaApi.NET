@@ -1,33 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.AspNetCore.Http;
 using Serilog;
 using Serilog.Events;
 
-namespace DoWithYou.Shared.Core.Utilities
+namespace DynaApi.NET.Shared.Core.Utilities
 {
     public class RequestLogger
     {
-        #region VARIABLES
         private static readonly ILogger _log = Log.ForContext<RequestLogger>();
-        #endregion
 
         public void LogRequest(HttpContext httpContext, double elapsedTime = 0)
         {
             try
             {
+                // TODO: Maybe don't assume the response StatusCode needs to be a 400
                 int statusCode = httpContext.Response?.StatusCode ?? StatusCodes.Status400BadRequest;
 
-                LogEventLevel level = statusCode >= StatusCodes.Status500InternalServerError ?
-                    LogEventLevel.Error :
-                    LogEventLevel.Information;
+                LogEventLevel level = LogEventLevel.Information;
+                if (statusCode >= StatusCodes.Status500InternalServerError)
+                    level = LogEventLevel.Error;
+                else if (statusCode >= StatusCodes.Status400BadRequest)
+                    level = LogEventLevel.Warning;
 
-                ILogger log = level == LogEventLevel.Error ?
-                    GetLoggerForErrorContext(httpContext) :
-                    _log;
+                var log = _log;
+                if (level == LogEventLevel.Error)
+                    TryGetLoggerWithMoreContext(httpContext, out log);
 
                 log.LogEvent(level, LoggerEvents.REQUEST, LoggerTemplates.LOG_WEB_REQUEST, httpContext.Request.Method, httpContext.Request.Path, statusCode, elapsedTime);
             }
@@ -38,42 +39,68 @@ namespace DoWithYou.Shared.Core.Utilities
             }
         }
 
-        #region PRIVATE
-        private static ILogger GetLoggerForErrorContext(HttpContext httpContext)
-        {
-            HttpRequest request = httpContext.Request;
-
-            IDictionary<string, string> headers = request.Headers.ToDictionary(
-                h => h.Key,
-                h => h.Value.ToString());
-
-            ILogger result = _log
-                .ForContext("RequestHeaders", headers, destructureObjects: true)
-                .ForContext("RequestHost", request.Host)
-                .ForContext("RequestProtocol", request.Protocol);
-
-            if (!request.HasFormContentType)
-                return result;
-
-            IDictionary<string, string> requestForm = request.Form.ToDictionary(
-                v => v.Key,
-                v => v.Value.ToString());
-
-            return result.ForContext("RequestForm", requestForm);
-        }
-
         private static void LogException(Exception ex, HttpContext httpContext, double elapsedTime)
         {
             try
             {
-                GetLoggerForErrorContext(httpContext)
-                    .LogEventError(ex, LoggerEvents.REQUEST, LoggerTemplates.LOG_WEB_REQUEST, httpContext.Request.Method, httpContext.Request.Path, 500, elapsedTime);
+                TryGetLoggerWithMoreContext(httpContext, out var log);
+
+                log.LogEventError(
+                    ex,
+                    LoggerEvents.REQUEST,
+                    LoggerTemplates.LOG_WEB_REQUEST,
+                    httpContext.Request.Method,
+                    httpContext.Request.Path,
+                    StatusCodes.Status500InternalServerError,
+                    elapsedTime
+                );
             }
             catch
             {
-                /* Digest */
+                // Atleast try and log the original exception via the logger with less context
+                _log.LogEventError(
+                    ex,
+                    LoggerEvents.REQUEST,
+                    LoggerTemplates.LOG_WEB_REQUEST,
+                    httpContext.Request.Method,
+                    httpContext.Request.Path,
+                    StatusCodes.Status500InternalServerError,
+                    elapsedTime
+                );
             }
         }
-        #endregion
+
+        private static bool TryGetLoggerWithMoreContext(HttpContext httpContext, out ILogger logger)
+        {
+            logger = _log;
+
+            try 
+            {
+                HttpRequest request = httpContext.Request;
+
+                IDictionary<string, string> headers = request.Headers.ToDictionary(
+                    h => h.Key,
+                    h => h.Value.ToString());
+
+                logger = logger
+                    .ForContext("RequestHeaders", headers, destructureObjects: true)
+                    .ForContext("RequestHost", request.Host)
+                    .ForContext("RequestProtocol", request.Protocol);
+
+                if (!request.HasFormContentType)
+                    return true;
+
+                IDictionary<string, string> requestForm = request.Form.ToDictionary(
+                    v => v.Key,
+                    v => v.Value.ToString());
+
+                logger = logger.ForContext("RequestForm", requestForm);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

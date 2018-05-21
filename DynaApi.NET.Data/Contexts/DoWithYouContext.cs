@@ -1,12 +1,12 @@
 ﻿using System;
-using DoWithYou.Data.Entities.DoWithYou;
-using DoWithYou.Data.Maps;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Data.Entities.DoWithYou;
+using DynaApi.NET.Data.Maps;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace DoWithYou.Data.Contexts
+namespace DynaApi.NET.Data.Contexts
 {
     public class DoWithYouContext : DbContext
     {

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using DoWithYou.Data.Entities.DoWithYou;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
+using DynaApi.NET.Data.Entities.DoWithYou;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
 
-namespace DoWithYou.Model.Models
+namespace DynaApi.NET.Model.Models
 {
     public class UserModel : IUserModel
     {

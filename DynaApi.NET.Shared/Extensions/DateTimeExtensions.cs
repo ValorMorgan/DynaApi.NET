@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DoWithYou.Shared.Extensions
+namespace DynaApi.NET.Shared.Extensions
 {
     public static class DateTimeExtensions
     {

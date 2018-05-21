@@ -5,7 +5,7 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 
-namespace DoWithYou.Shared.Factories
+namespace DynaApi.NET.Shared.Factories
 {
     public class LoggerFactory : ILoggerFactory
     {

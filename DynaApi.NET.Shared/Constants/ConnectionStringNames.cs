@@ -1,7 +1,6 @@
-﻿namespace DoWithYou.Shared.Constants
+﻿namespace DynaApi.NET.Shared.Constants
 {
     public static class ConnectionStringNames
     {
-        public const string DO_WITH_YOU = "DoWithYou";
     }
 }

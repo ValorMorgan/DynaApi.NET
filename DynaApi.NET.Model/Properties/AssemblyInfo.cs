@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("DoWithYou.UnitTest")]
+[assembly: InternalsVisibleTo("DynaApi.NET.UnitTest")]

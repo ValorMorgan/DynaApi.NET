@@ -1,9 +1,9 @@
 ﻿using System;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 
-namespace DoWithYou.Data.Entities.DoWithYou.Base
+namespace DynaApi.NET.Data.Entities.DoWithYou.Base
 {
     public class BaseEntity : IBaseEntity
     {

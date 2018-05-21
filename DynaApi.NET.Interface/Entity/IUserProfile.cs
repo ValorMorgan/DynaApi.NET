@@ -1,4 +1,4 @@
-﻿namespace DoWithYou.Interface.Entity
+﻿namespace DynaApi.NET.Interface.Entity
 {
     public interface IUserProfile : IBaseEntity
     {

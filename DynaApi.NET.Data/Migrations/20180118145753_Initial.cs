@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DoWithYou.Data.Migrations
+namespace DynaApi.NET.Data.Migrations
 {
     public partial class Initial : Migration
     {

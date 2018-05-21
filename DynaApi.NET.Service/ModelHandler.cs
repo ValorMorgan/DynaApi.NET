@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
-using DoWithYou.Interface.Service;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
+using DynaApi.NET.Interface.Service;
 
-namespace DoWithYou.Service
+namespace DynaApi.NET.Service
 {
     public class ModelHandler<TModel, T1> : IModelHandler<TModel, T1>
         where TModel : IModel<T1>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DoWithYou.API.Controllers.Base
+namespace DynaApi.NET.API.Controllers.Base
 {
     public class BaseController<TModel, TEntity> : Controller
     {

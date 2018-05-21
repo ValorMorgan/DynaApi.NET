@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Serilog.Core;
 
-namespace DoWithYou.Shared.Factories
+namespace DynaApi.NET.Shared.Factories
 {
     public interface ILoggerFactory
     {

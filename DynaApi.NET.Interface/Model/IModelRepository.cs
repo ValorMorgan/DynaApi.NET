@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Interface.Entity;
+using DynaApi.NET.Interface.Entity;
 
-namespace DoWithYou.Interface.Model
+namespace DynaApi.NET.Interface.Model
 {
     public interface IModelRepository<TModel, T1> : IDisposable
         where TModel : IModel<T1>

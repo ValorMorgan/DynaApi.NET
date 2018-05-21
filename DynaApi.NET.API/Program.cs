@@ -1,6 +1,6 @@
-﻿using DoWithYou.Shared.Core;
+﻿using DynaApi.NET.Shared.Core;
 
-namespace DoWithYou.API
+namespace DynaApi.NET.API
 {
     public class Program
     {

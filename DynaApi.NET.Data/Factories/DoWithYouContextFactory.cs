@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using Autofac;
-using DoWithYou.Data.Contexts;
-using DoWithYou.Shared.Factories;
-using DoWithYou.Shared.Repositories.Settings;
+using DynaApi.NET.Data.Contexts;
+using DynaApi.NET.Shared.Factories;
+using DynaApi.NET.Shared.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace DoWithYou.Data.Factories
+namespace DynaApi.NET.Data.Factories
 {
     public class DoWithYouContextFactory : IDesignTimeDbContextFactory<DoWithYouContext>
     {
@@ -66,7 +66,7 @@ namespace DoWithYou.Data.Factories
             AppConfig appConfig = scope.Resolve<AppConfig>();
 
             string connectionString = appConfig.ConnectionStrings
-                .Single(c => c?.Name == nameof(DoWithYou)).Connection;
+                .Single(c => c?.Name == nameof(DynaApi.NET)).Connection;
 
             DbContextOptionsBuilder<DoWithYouContext> dbOptionsBuilder = GetDbContextOptionsBuilder(connectionString);
             if (dbOptionsBuilder == default(DbContextOptionsBuilder<DoWithYouContext>))

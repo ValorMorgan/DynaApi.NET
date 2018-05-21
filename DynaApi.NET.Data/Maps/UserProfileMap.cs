@@ -1,12 +1,12 @@
 ﻿using System;
-using DoWithYou.Data.Entities.DoWithYou;
-using DoWithYou.Shared;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Data.Entities.DoWithYou;
+using DynaApi.NET.Shared;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Serilog;
 
-namespace DoWithYou.Data.Maps
+namespace DynaApi.NET.Data.Maps
 {
     public static class UserProfileMap
     {

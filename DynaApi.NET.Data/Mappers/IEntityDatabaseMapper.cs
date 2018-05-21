@@ -1,7 +1,7 @@
-﻿using DoWithYou.Interface.Entity;
+﻿using DynaApi.NET.Interface.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DoWithYou.Data.Mappers
+namespace DynaApi.NET.Data.Mappers
 {
     public interface IEntityDatabaseMapper<T>
         where T : IBaseEntity

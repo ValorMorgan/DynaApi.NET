@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace DoWithYou.Shared.Core
+namespace DynaApi.NET.Shared.Core
 {
     public class WebHost : IDisposable
     {

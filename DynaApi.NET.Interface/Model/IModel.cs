@@ -1,6 +1,6 @@
-﻿using DoWithYou.Interface.Entity;
+﻿using DynaApi.NET.Interface.Entity;
 
-namespace DoWithYou.Interface.Model
+namespace DynaApi.NET.Interface.Model
 {
     public interface IModel<T1>
         where T1 : IBaseEntity

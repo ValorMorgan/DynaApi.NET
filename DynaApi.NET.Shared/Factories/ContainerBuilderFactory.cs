@@ -1,14 +1,14 @@
 ﻿using System;
 using Autofac;
-using DoWithYou.Interface.Shared;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Converters;
-using DoWithYou.Shared.Extensions;
-using DoWithYou.Shared.Repositories.Settings;
+using DynaApi.NET.Interface.Shared;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Converters;
+using DynaApi.NET.Shared.Extensions;
+using DynaApi.NET.Shared.Repositories.Settings;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace DoWithYou.Shared.Factories
+namespace DynaApi.NET.Shared.Factories
 {
     public class ContainerBuilderFactory : IContainerBuilderFactory
     {

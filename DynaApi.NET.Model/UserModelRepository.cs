@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Interface.Data;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
+using DynaApi.NET.Interface.Data;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
 
-namespace DoWithYou.Model
+namespace DynaApi.NET.Model
 {
     public class UserModelRepository : IModelRepository<IUserModel, IUser, IUserProfile>
     {

@@ -1,21 +1,21 @@
 ﻿using Autofac;
-using DoWithYou.Data.Contexts;
-using DoWithYou.Data.Factories;
-using DoWithYou.Data.Mappers;
-using DoWithYou.Interface.Data;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
-using DoWithYou.Interface.Service;
-using DoWithYou.Model;
-using DoWithYou.Model.Base;
-using DoWithYou.Model.Mappers;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Data.Contexts;
+using DynaApi.NET.Data.Factories;
+using DynaApi.NET.Data.Mappers;
+using DynaApi.NET.Interface.Data;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
+using DynaApi.NET.Interface.Service;
+using DynaApi.NET.Model;
+using DynaApi.NET.Model.Base;
+using DynaApi.NET.Model.Mappers;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace DoWithYou.Service.Utilities
+namespace DynaApi.NET.Service.Utilities
 {
     public static class ContainerBuilderExtensions
     {

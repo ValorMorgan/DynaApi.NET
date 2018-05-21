@@ -1,25 +1,23 @@
 ﻿using System;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Core;
-using DoWithYou.Shared.Core.Middleware;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Core;
+using DynaApi.NET.Shared.Core.Middleware;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace DoWithYou.API
+namespace DynaApi.NET.API
 {
-    public class Startup : DoWithYouStartupBase, IStartup
+    public class Startup : Shared.Core.StartupBase, IStartup
     {
-        #region CONSTRUCTORS
         public Startup(IConfiguration configuration, IHostingEnvironment env)
             : base(configuration, env)
         {
             Log.Logger.LogEventVerbose(LoggerEvents.CONSTRUCTOR, LoggerTemplates.CONSTRUCTOR, nameof(Startup));
         }
-        #endregion
 
         public new void Configure(IApplicationBuilder app)
         {
@@ -39,7 +37,6 @@ namespace DoWithYou.API
             return base.ConfigureServices(services);
         }
 
-        #region PRIVATE
         private void ConfigureForEnvironment(ref IApplicationBuilder app)
         {
             Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Environment: {Environment}", HostingEnvironment.EnvironmentName);
@@ -59,6 +56,5 @@ namespace DoWithYou.API
         {
             SetExceptionHandler(ref app, "/Home/Error");
         }
-        #endregion
     }
 }

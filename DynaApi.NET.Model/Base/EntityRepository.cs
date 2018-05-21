@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Data.Entities.DoWithYou.Base;
-using DoWithYou.Interface.Data;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Data.Entities.DoWithYou.Base;
+using DynaApi.NET.Interface.Data;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace DoWithYou.Model.Base
+namespace DynaApi.NET.Model.Base
 {
     public abstract class EntityRepository<T> : IRepository<T>
         where T : BaseEntity

@@ -1,4 +1,4 @@
-﻿namespace DoWithYou.Shared.Constants
+﻿namespace DynaApi.NET.Shared.Constants
 {
     public static class LoggerTemplates
     {

@@ -1,14 +1,14 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using DoWithYou.Service.Utilities;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
-using DoWithYou.Shared.Factories;
+using DynaApi.NET.Service.Utilities;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
+using DynaApi.NET.Shared.Factories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace DoWithYou.Shared.Core.Extensions
+namespace DynaApi.NET.Shared.Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {

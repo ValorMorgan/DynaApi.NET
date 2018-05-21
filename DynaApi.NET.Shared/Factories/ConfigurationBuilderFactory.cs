@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 
-namespace DoWithYou.Shared.Factories
+namespace DynaApi.NET.Shared.Factories
 {
     public class ConfigurationBuilderFactory : IConfigurationBuilderFactory
     {

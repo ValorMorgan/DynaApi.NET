@@ -1,12 +1,12 @@
-﻿using DoWithYou.Data.Entities.DoWithYou;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Interface.Model;
-using DoWithYou.Model.Models;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+﻿using DynaApi.NET.Data.Entities.DoWithYou;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Interface.Model;
+using DynaApi.NET.Model.Models;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Serilog;
 
-namespace DoWithYou.Model.Mappers
+namespace DynaApi.NET.Model.Mappers
 {
     public class UserModelMapper : IModelMapper<IUserModel, IUser, IUserProfile>
     {

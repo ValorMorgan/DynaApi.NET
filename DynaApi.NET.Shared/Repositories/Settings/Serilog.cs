@@ -1,4 +1,4 @@
-﻿namespace DoWithYou.Shared.Repositories.Settings
+﻿namespace DynaApi.NET.Shared.Repositories.Settings
 {
     public class Serilog
     {

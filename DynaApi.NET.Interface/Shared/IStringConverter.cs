@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DoWithYou.Interface.Shared
+namespace DynaApi.NET.Interface.Shared
 {
     public interface IStringConverter
     {

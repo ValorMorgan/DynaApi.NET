@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using DoWithYou.Interface.Shared;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Interface.Shared;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Serilog;
 
-namespace DoWithYou.Shared.Converters
+namespace DynaApi.NET.Shared.Converters
 {
     public class StringConverter : IStringConverter
     {

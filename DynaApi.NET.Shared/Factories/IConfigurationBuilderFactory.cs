@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace DoWithYou.Shared.Factories
+namespace DynaApi.NET.Shared.Factories
 {
     public interface IConfigurationBuilderFactory
     {

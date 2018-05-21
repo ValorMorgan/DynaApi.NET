@@ -1,10 +1,10 @@
 ﻿using System;
-using DoWithYou.Data.Contexts;
+using DynaApi.NET.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace DoWithYou.Migrations
+namespace DynaApi.NET.Migrations
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {

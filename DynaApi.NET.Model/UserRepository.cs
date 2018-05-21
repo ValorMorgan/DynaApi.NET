@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DoWithYou.Data.Entities.DoWithYou;
-using DoWithYou.Data.Mappers;
-using DoWithYou.Interface.Data;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Model.Base;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
+using DynaApi.NET.Data.Entities.DoWithYou;
+using DynaApi.NET.Data.Mappers;
+using DynaApi.NET.Interface.Data;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Model.Base;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace DoWithYou.Model
+namespace DynaApi.NET.Model
 {
     public class UserRepository : EntityRepository<User>, IRepository<IUser>
     {

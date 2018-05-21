@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
-using DoWithYou.Data.Contexts;
-using DoWithYou.Data.Factories;
-using DoWithYou.Interface.Entity;
-using DoWithYou.Shared.Constants;
-using DoWithYou.Shared.Extensions;
-using DoWithYou.Shared.Repositories.Settings;
+using DynaApi.NET.Data.Contexts;
+using DynaApi.NET.Data.Factories;
+using DynaApi.NET.Interface.Entity;
+using DynaApi.NET.Shared.Constants;
+using DynaApi.NET.Shared.Extensions;
+using DynaApi.NET.Shared.Repositories.Settings;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace DoWithYou.Data.Mappers
+namespace DynaApi.NET.Data.Mappers
 {
     public class EntityDatabaseMapper<T> : IEntityDatabaseMapper<T>
         where T : IBaseEntity
@@ -51,7 +51,7 @@ namespace DoWithYou.Data.Mappers
         private DbContext GetDoWithYouContext()
         {
             var factory = new DbContextOptionsFactory<DoWithYouContext>();
-            string connectionString = GetConnectionString(ConnectionStringNames.DO_WITH_YOU);
+            string connectionString = GetConnectionString(""); // TODO: Add connection string
             return new DoWithYouContext(factory.GetOptions(connectionString));
         }
         #endregion
