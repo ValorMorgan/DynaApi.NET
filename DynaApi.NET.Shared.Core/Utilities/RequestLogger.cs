@@ -27,7 +27,7 @@ namespace DynaApi.NET.Shared.Core.Utilities
                     level = LogEventLevel.Warning;
 
                 var log = _log;
-                if (level == LogEventLevel.Error)
+                if (level >= LogEventLevel.Error)
                     TryGetLoggerWithMoreContext(httpContext, out log);
 
                 log.LogEvent(level, LoggerEvents.REQUEST, LoggerTemplates.LOG_WEB_REQUEST, httpContext.Request.Method, httpContext.Request.Path, statusCode, elapsedTime);
@@ -97,8 +97,9 @@ namespace DynaApi.NET.Shared.Core.Utilities
                 logger = logger.ForContext("RequestForm", requestForm);
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                logger.LogEventWarning(ex, LoggerEvents.REQUEST, "Failed to get complete logger context for response {StatusCode}", httpContext.Response.StatusCode);
                 return false;
             }
         }

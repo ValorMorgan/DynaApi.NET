@@ -7,5 +7,7 @@ namespace DynaApi.NET.Interface.Shared
         T To<T>();
 
         dynamic To(Type type);
+
+        int ToHash();
     }
 }

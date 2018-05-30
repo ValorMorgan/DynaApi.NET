@@ -27,8 +27,7 @@ namespace DynaApi.NET.Shared.Factories
             Log.Logger.LogEventDebug(LoggerEvents.LIBRARY, "{Class} constructed.", nameof(ContainerBuilder));
             return builder;
         }
-
-        #region PRIVATE
+        
         private static void RegisterInstancesForBuilder(ref ContainerBuilder builder, IContainer container, IConfiguration config)
         {
             if (builder == null)
@@ -48,9 +47,10 @@ namespace DynaApi.NET.Shared.Factories
                 throw new ArgumentNullException(nameof(builder));
 
             // Alphabetical order on Class name
+            builder.RegisterType<ConfigurationBuilderFactory>()?.As<IConfigurationBuilderFactory>();
+            builder.RegisterType<ContainerBuilderFactory>()?.As<IContainerBuilderFactory>();
             builder.RegisterType<LoggerFactory>()?.As<ILoggerFactory>();
             builder.RegisterType<StringConverter>()?.As<IStringConverter>();
         }
-        #endregion
     }
 }

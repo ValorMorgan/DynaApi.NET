@@ -4,9 +4,7 @@ namespace DynaApi.NET.Shared.Factories
 {
     public interface IConfigurationBuilderFactory
     {
-        IConfigurationBuilder GetBuilder();
-        IConfigurationBuilder GetBuilder(string basePath);
-        IConfigurationBuilder GetEnvironmentBuilder(string environment);
-        IConfigurationBuilder GetEnvironmentBuilder(string environment, string basePath);
+        IConfigurationBuilder GetBuilder(string basePath = default);
+        IConfigurationBuilder GetEnvironmentBuilder(string environment, string basePath = default);
     }
 }

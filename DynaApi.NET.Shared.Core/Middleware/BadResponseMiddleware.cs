@@ -103,7 +103,11 @@ namespace DynaApi.NET.Shared.Core.Middleware
         {
             try
             {
-                Log.Logger.LogEventWarning(LoggerEvents.RESPONSE, "Bad response with status code {Status} being handled.", context.Response.StatusCode);
+                Log.Logger.LogEventWarning(
+                    LoggerEvents.RESPONSE,
+                    "Bad response with status code {Status} being handled.\n\tException: {Exception}",
+                    context.Response.StatusCode,
+                    ex.ToString());
 
                 // TODO: It may be wiser to let the StatusCode persist instead of forcing it to a 500
                 context.Response.StatusCode = StatusCodes.Status500InternalServerError;

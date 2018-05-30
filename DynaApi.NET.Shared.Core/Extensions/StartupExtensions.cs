@@ -14,6 +14,9 @@ namespace DynaApi.NET.Shared.Core {
             // Logging for requests
             app.UseMiddleware<LoggingMiddleware>();
 
+            // Handles and logs bad responses
+            app.UseMiddleware<BadResponseMiddleware>();
+
             return app;
         }
     }

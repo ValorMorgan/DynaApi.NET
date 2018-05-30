@@ -10,11 +10,8 @@ namespace DynaApi.NET.Shared.Core
 {
     public class WebHost : IDisposable
     {
-        #region VARIABLES
         private IWebHost _host;
-        #endregion
 
-        #region CONSTRUCTORS
         public WebHost(string[] args, Type startupType)
         {
             try
@@ -22,7 +19,7 @@ namespace DynaApi.NET.Shared.Core
                 _host = GetWebHostBuilder(args, startupType)?.Build();
 
                 if (_host == default(IWebHost))
-                    throw new NullReferenceException($"{nameof(IWebHost)} built as a default{nameof(IWebHost)}.");
+                    throw new NullReferenceException($"{nameof(IWebHost)} built as a default({nameof(IWebHost)}).");
             }
             catch (Exception ex)
             {
@@ -34,7 +31,6 @@ namespace DynaApi.NET.Shared.Core
                 throw wrapper;
             }
         }
-        #endregion
 
         // TODO: Don't rely on CreateDefaultBuilder (optimize)
         public static IWebHostBuilder GetWebHostBuilder(string[] args, Type startupType) =>
@@ -96,7 +92,6 @@ namespace DynaApi.NET.Shared.Core
             _host = null;
         }
 
-        #region PRIVATE
         private static bool TryCloseAndFlushLogger()
         {
             if (Log.Logger == null)
@@ -114,6 +109,5 @@ namespace DynaApi.NET.Shared.Core
                 return false;
             }
         }
-        #endregion
     }
 }

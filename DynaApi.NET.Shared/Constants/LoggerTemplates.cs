@@ -2,7 +2,6 @@
 {
     public static class LoggerTemplates
     {
-        #region VARIABLES
         public const string CONFIGURING = "Configuring {Class}";
 
         public const string CONNECTION_TYPE = "{Class} to use {ConnectionType} with {ConnectionString} connection string";
@@ -64,6 +63,5 @@
         public const string REQUEST_UPDATE = "Requested to Update {Entity}[{EntityId}]";
 
         public const string REQUEST_UPDATE_DYNAMIC = "Requested to Update {Entity} via dynamic request";
-        #endregion
     }
 }

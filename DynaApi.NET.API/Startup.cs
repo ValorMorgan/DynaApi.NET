@@ -21,8 +21,6 @@ namespace DynaApi.NET.API
 
         public new void Configure(IApplicationBuilder app)
         {
-            app.UseMiddleware<BadResponseMiddleware>();
-
             base.Configure(app);
 
             base.ConfigureMvc(ref app);

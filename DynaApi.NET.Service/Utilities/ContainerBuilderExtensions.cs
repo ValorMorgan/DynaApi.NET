@@ -27,7 +27,6 @@ namespace DynaApi.NET.Service.Utilities
             return builder;
         }
 
-        #region PRIVATE
         private static void RegisterDataLayerTypes(ref ContainerBuilder builder, IConfiguration config)
         {
             RegisterTypes(ref builder);
@@ -35,12 +34,12 @@ namespace DynaApi.NET.Service.Utilities
 
             void RegisterTypes(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Data Layer Types to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Types to {Class}", "Data", nameof(ContainerBuilder));
             }
 
             void RegisterInstances(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Data Layer Instances to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Instances to {Class}", "Data", nameof(ContainerBuilder));
 
                 // NOTE: Context are retrieved through the "Mapper"
                 // Issues with <out T> type on the factory and with "RegisterInstance" when we want the context to live per request / scope
@@ -56,7 +55,7 @@ namespace DynaApi.NET.Service.Utilities
 
             void RegisterTypes(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Model Layer Types to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Types to {Class}", "Model", nameof(ContainerBuilder));
 
                 build.RegisterType<UserModelMapper>().As<IModelMapper<IUserModel, IUser, IUserProfile>>().SingleInstance();
 
@@ -68,7 +67,7 @@ namespace DynaApi.NET.Service.Utilities
 
             void RegisterInstances(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Model Layer Instances to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Instances to {Class}", "Model", nameof(ContainerBuilder));
             }
         }
 
@@ -79,7 +78,7 @@ namespace DynaApi.NET.Service.Utilities
 
             void RegisterTypes(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Service Layer Types to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Types to {Class}", "Service", nameof(ContainerBuilder));
                 
                 build.RegisterGeneric(typeof(ModelHandler<,>)).As(typeof(IModelHandler<,>)).InstancePerLifetimeScope();
                 build.RegisterGeneric(typeof(ModelHandler<,,>)).As(typeof(IModelHandler<,,>)).InstancePerLifetimeScope();
@@ -87,9 +86,8 @@ namespace DynaApi.NET.Service.Utilities
 
             void RegisterInstances(ref ContainerBuilder build)
             {
-                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering Service Layer Instances to {Class}", nameof(ContainerBuilder));
+                Log.Logger.LogEventDebug(LoggerEvents.STARTUP, "Registering {Layer} Layer Instances to {Class}", "Service", nameof(ContainerBuilder));
             }
         }
-        #endregion
     }
 }

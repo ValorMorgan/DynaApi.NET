@@ -9,17 +9,9 @@ namespace DynaApi.NET.Shared.Converters
 {
     public class StringConverter : IStringConverter
     {
-        #region VARIABLES
         private readonly string _toConvert;
-        #endregion
 
-        #region CONSTRUCTORS
-        public StringConverter()
-        {
-            Log.Logger.LogEventVerbose(LoggerEvents.CONSTRUCTOR, LoggerTemplates.CONSTRUCTOR, nameof(StringConverter));
-
-            _toConvert = default;
-        }
+        public StringConverter() : this(default) { }
 
         internal StringConverter(string value)
         {
@@ -27,7 +19,6 @@ namespace DynaApi.NET.Shared.Converters
 
             _toConvert = value;
         }
-        #endregion
 
         public T To<T>() =>
             To(typeof(T)) ?? default(T);
@@ -47,10 +38,12 @@ namespace DynaApi.NET.Shared.Converters
                 GetStringConvertedToType(type);
         }
 
+        public int ToHash() =>
+            ToHash(_toConvert);
+
         public static int ToHash(string value) =>
             EqualityComparer<string>.Default.GetHashCode(value?.Trim() ?? string.Empty);
 
-        #region PRIVATE
         private dynamic GetStringConvertedToType(Type type)
         {
             Log.Logger.LogEventInformation(LoggerEvents.LIBRARY, "Attempting manual conversion of {Value} to type {Type}", _toConvert, type.FullName);
@@ -116,7 +109,6 @@ namespace DynaApi.NET.Shared.Converters
             Log.Logger.LogEventWarning(LoggerEvents.LIBRARY, "Manual conversion of {Value} to type {Type} failed. Returning default(string).", _toConvert, type.FullName);
             return default;
         }
-        #endregion
     }
 
     public static class StringConverterBuilder
